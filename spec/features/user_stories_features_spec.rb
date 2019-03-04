@@ -22,4 +22,14 @@ RSpec.describe 'User Stories' do
       expect(account.balance).to eq 500
     end 
   end 
+
+  describe '#print_history' do 
+    it 'allows the user to print a transaction history' do 
+      account = Account.new
+      account.deposit(1000)
+      account.withdrawal(500)
+      expect(account.print_history).to eq 'date || credit || debit || balance
+      19/02/2019 || || 500.00 || 1000
+      19/02/2019 || 500|| || 500
+    end 
 end 
