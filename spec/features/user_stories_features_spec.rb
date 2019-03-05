@@ -2,6 +2,8 @@ require 'account'
 
 
 RSpec.describe 'User Stories' do 
+
+
   it 'allows user to have a bank account' do 
     account = Account.new
     expect(account).to be_a Account
@@ -34,10 +36,13 @@ end
 
   describe '#print_history' do 
     it 'allows the user to print a transaction history' do 
-      account = Account.new
-      account.deposit(1000)
-      account.withdrawal(500)
-      expect(account.print_history).to eq 'date || credit || debit || balance\n 19/02/2019 || || 500.00 || 1000\n 19/02/2019 || 500|| || 500\n'
+      # date =(double :date, new: 2001-01-01)
+      date = Date.new(2001,01,01)
+      test_account = Account.new
+      test_account.deposit(1000, date)
+      test_account.deposit(2000, date)
+      # test_account.withdrawal(50, Date.new(2001-01-01))
+      expect(test_account.print_statement).to eq "this"
     end 
   end 
-end 
+end

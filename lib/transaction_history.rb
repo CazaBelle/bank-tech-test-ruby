@@ -9,4 +9,8 @@ attr_reader :history
     @history.push(transaction)
   end
 
+  def show_history
+    # @history
+  end
+
 end 

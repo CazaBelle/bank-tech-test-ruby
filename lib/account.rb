@@ -4,19 +4,21 @@ require 'transaction'
 class Account 
   
   attr_reader :balance
-  
+
   def initialize(transaction_history=TransactionHistory)
     @balance = 0 
     @transaction_history = TransactionHistory.new
   end
+  
+  HEADER = 'date || credit || debit || balance\n'
 
-  def deposit(amount, transaction=Transaction)
+  def deposit(amount, date=Date.new)
     @balance = @balance + amount 
-    Transaction.new(amount, 'credit', @balance, )
-    # @transaction_history.add_transaction(transaction.new(amount, 'credit', @balance))
+    new_transaction(amount, 'nil', @balance, date)
+   
   end 
 
-  def withdrawal(amount)
+  def withdrawal('nil', amount, date=Date)
     @balance -= amount
   end
 
@@ -24,10 +26,16 @@ class Account
     @balance
   end 
 
-  #in order to print history I need a way to store each transaction
-  def print_history
-  'date || credit || debit || balance\n 19/02/2019 || || 500.00 || 1000\n 19/02/2019 || 500|| || 500\n'
+  def new_transaction(amount, credit, debit new_balance, date)
+    transaction = Transaction.new(amount, type, balance, date)
+    @transaction_history.add_transaction(transaction)
   end
 
+  def print_statement
+      @transaction_history.history.map do |transaction| 
+ 
+      "#{transaction.date} || #{transaction.amount} || #{transaction.amount} || #{transaction.new_balance}" 
+      end.unshift(HEADER).join("\n")
   
-end 
+    end
+  end 
