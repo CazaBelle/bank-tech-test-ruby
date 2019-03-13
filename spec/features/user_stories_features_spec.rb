@@ -49,9 +49,10 @@ end
   describe '#print_history' do 
     it 'allows the user to print a transaction history' do 
       date = Date.new(2001,01,01)
-      account.deposit(1000, date)
+      account.deposit(1500, date)
+      account.withdrawal(500, date)
       account.deposit(2000, date)
-      expect(account.print_statement).to eq  "date || credit || debit || balance\n2001-01-01 || 1000 || 0 || 1000\n2001-01-01 || 2000 || 0 || 3000"
+      expect(account.print_statement).to eq  "date || credit   || debit|| balance\n01/01/2001 ||2000 ||  || 3000\n01/01/2001 || || 500 || 1000\n01/01/2001 ||1500 ||  || 1500"
       
     end 
   end 

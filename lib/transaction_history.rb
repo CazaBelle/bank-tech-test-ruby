@@ -5,7 +5,7 @@ attr_reader :history
     @history = []
   end 
 
-  HEADER = 'date || credit || debit || balance'
+  HEADER =  "date || credit   || debit|| balance"
 
   def add_transaction(transaction)
     @history.push(transaction)
@@ -16,8 +16,8 @@ attr_reader :history
   end 
 
   def print_history
-    @history.map do |transaction| 
-      "#{transaction.date} || #{transaction.credit_amount} || #{transaction.debit_amount} || #{transaction.new_balance}" 
+    @history.reverse.map do |transaction| 
+      "#{transaction.date.strftime("%d/%m/%Y")} ||#{transaction.credit_amount} || #{transaction.debit_amount} || #{transaction.new_balance}" 
       end.unshift(HEADER).join("\n")
   end
 
