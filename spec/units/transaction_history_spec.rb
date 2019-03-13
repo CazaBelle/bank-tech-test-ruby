@@ -12,7 +12,7 @@ RSpec.describe TransactionHistory do
   end
  
   it 'stores transactions' do
-    expect(transaction_history.show_history).to eq [transaction]
+    expect(transaction_history.display_history).to eq [transaction]
   end
 
   

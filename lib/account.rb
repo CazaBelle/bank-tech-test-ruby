@@ -10,15 +10,13 @@ class Account
     @transaction_history = TransactionHistory.new
   end
   
-  HEADER = 'date || credit || debit || balance\n'
-
   def deposit(amount, date=Date.new)
     @balance = @balance + amount 
-    new_transaction(amount, 'nil', @balance, date)
+    new_transaction(amount, @balance, date)
    
   end 
 
-  def withdrawal('nil', amount, date=Date)
+  def withdrawal(amount, date=Date.new)
     @balance -= amount
   end
 
@@ -26,16 +24,13 @@ class Account
     @balance
   end 
 
-  def new_transaction(amount, credit, debit new_balance, date)
-    transaction = Transaction.new(amount, type, balance, date)
+  def new_transaction(amount, new_balance, date)
+    transaction = Transaction.new(amount, balance, date)
     @transaction_history.add_transaction(transaction)
   end
 
   def print_statement
-      @transaction_history.history.map do |transaction| 
- 
-      "#{transaction.date} || #{transaction.amount} || #{transaction.amount} || #{transaction.new_balance}" 
-      end.unshift(HEADER).join("\n")
-  
+    @transaction_history.print_history
+
     end
   end 
