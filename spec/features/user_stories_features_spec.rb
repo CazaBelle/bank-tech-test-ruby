@@ -15,7 +15,11 @@ subject(:account){ described_class.new }
     end
     
     it 'raises an error if user tries to deposit a negative number' do 
-      expect{ account.deposit(-100) }.to raise_error "Can only deposit amounts > 0. Try again"
+      expect{ account.deposit(-100) }.to raise_error 
+    end 
+
+    it 'raises an error when user tries to deposit NAN' do 
+      expect{ account.deposit("money") }.to raise_error
     end 
   end 
 
@@ -24,6 +28,14 @@ subject(:account){ described_class.new }
       account.deposit(1000)
       account.withdrawal(500)
       expect(account.balance).to eq 500
+    end 
+
+    it 'raises an error if user tries to withdrawal a negative number' do 
+      expect{ account.withdrawal(-50) }.to raise_error 
+    end 
+
+    it 'raises an error when user tries withdrawal not a number' do 
+      expect{ account.withdrawal(stuff) }.to raise_error
     end 
   end 
 
