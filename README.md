@@ -1,8 +1,21 @@
 # Bank Tech Test 
-A simple app that keeps a record of all transactions and allows you to print a copy of your statement
+A simple app that allows the user to: 
+* create an account
+* deposit money
+* withdraw money
+* keeps a record of all transactions and 
+* print a copy of their statement
+
+# Quickstart
+```
+$ git clone https://github.com/CazaBelle/bank-tech-test-ruby.git
+$ cd bank-tech-test-ruby
+$ bundle install 
+$ bundle exec rspec #Run the tests
+$ rubocop #confirm the code is linted
+```
 
 # User Stories 
-
 ```
 As a user 
 So that I can keep track of my money
@@ -28,13 +41,22 @@ I would like to see a date with every transaction
 # Class Diagram
 ![](images/bank-tech-test.png)
 
-# Requirements
+# How to use
 ```
-You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
-Deposits, withdrawal.
-Account statement (date, amount, balance) printing.
-Data can be kept in memory (it doesn't need to be stored to a database or anything).
+$ pry
+[1]pry(main)> require './lib/account.rb
+[2]pry(main)> account = Account.new
+[3]pry(main)> account.deposit(100)
+[4]pry(main)> account.withdrawal(50)
+[5]pry(main)> account.print_statement
 ```
+
+# Demo
+![](images/bank-tech-test-pry.png)
+
+# Code Quality 
+* Simplecov
+* Rubocop
 
 # Acceptance criteria
 ```

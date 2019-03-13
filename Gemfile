@@ -9,3 +9,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem "rspec", "~> 3.8"
 
 gem "date", "~> 2.0"
+
+gem "simplecov", "~> 0.16.1"
+
+gem "simplecov-console", "~> 0.4.2"

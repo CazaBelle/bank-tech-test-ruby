@@ -26,7 +26,7 @@ class Account
   def withdrawal(debit_amount, date=Date.today)
     raise "Can only withdrawal amounts > 0. Try again" if debit_amount < 0 || debit_amount == Float::NAN
     credit_amount = nil 
-    @balance -= debit_amount
+    @balance = @balance - debit_amount
     new_transaction(credit_amount, debit_amount, @balance, date)
   end
 
