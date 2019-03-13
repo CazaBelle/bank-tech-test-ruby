@@ -1,11 +1,11 @@
 class TransactionHistory
-attr_reader :history
+  attr_reader :history
 
   def initialize
     @history = []
-  end 
+  end
 
-  HEADER =  "date || credit   || debit|| balance"
+  HEADER = 'date || credit   || debit|| balance'.freeze
 
   def add_transaction(transaction)
     @history.push(transaction)
@@ -13,12 +13,11 @@ attr_reader :history
 
   def display_history
     @history
-  end 
-
-  def print_history
-    @history.reverse.map do |transaction| 
-      "#{transaction.date.strftime("%d/%m/%Y")} ||#{transaction.credit_amount} || #{transaction.debit_amount} || #{transaction.new_balance}" 
-      end.unshift(HEADER).join("\n")
   end
 
-end 
+  def print_history
+    @history.reverse.map do |transaction|
+      "#{transaction.date.strftime('%d/%m/%Y')} ||#{transaction.credit_amount} || #{transaction.debit_amount} || #{transaction.new_balance}"
+    end.unshift(HEADER).join("\n")
+  end
+end
