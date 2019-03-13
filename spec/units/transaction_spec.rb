@@ -10,7 +10,6 @@ RSpec.describe Transaction do
       expect(transaction.credit_amount).to eq 50 
       expect(transaction.new_balance).to eq 1000
       expect(transaction.date).to eq "01/01/2001"
-     
     end
     
   end 
