@@ -17,14 +17,14 @@ class Account
   end 
   
   def deposit(credit_amount, date=Date.today)
-    raise "Can only deposit amounts > 0. Try again" if credit_amount < 0 || credit_amount == Float::NAN
+    raise "Can only deposit amounts > 0. Try again" unless credit_amount.to_i.integer? && credit_amount.to_i.positive?
     debit_amount = nil
     @balance = @balance + credit_amount 
     new_transaction(credit_amount, debit_amount, @balance, date)
   end 
 
   def withdrawal(debit_amount, date=Date.today)
-    raise "Can only withdrawal amounts > 0. Try again" if debit_amount < 0 || debit_amount == Float::NAN
+    raise "Can only withdrawal amounts > 0. Try again" unless debit_amount.to_i.integer? && debit_amount.to_i.positive?
     credit_amount = nil 
     @balance = @balance - debit_amount
     new_transaction(credit_amount, debit_amount, @balance, date)

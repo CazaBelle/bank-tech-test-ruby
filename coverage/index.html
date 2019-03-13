@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-03-13T17:08:49+00:00">2019-03-13T17:08:49+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-03-13T18:23:49+00:00">2019-03-13T18:23:49+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -277,7 +277,7 @@
         <li class="covered" data-hits="7" data-linenumber="20">
           <span class="hits">7</span>
           
-          <code class="ruby">    raise &quot;Can only deposit amounts &gt; 0. Try again&quot; if credit_amount &lt; 0 || credit_amount == Float::NAN</code>
+          <code class="ruby">    raise &quot;Can only deposit amounts &gt; 0. Try again&quot; unless credit_amount.to_i.integer? &amp;&amp; credit_amount.to_i.positive?</code>
         </li>
       
         <li class="covered" data-hits="5" data-linenumber="21">
@@ -319,7 +319,7 @@
         <li class="covered" data-hits="4" data-linenumber="27">
           <span class="hits">4</span>
           
-          <code class="ruby">    raise &quot;Can only withdrawal amounts &gt; 0. Try again&quot; if debit_amount &lt; 0 || debit_amount == Float::NAN</code>
+          <code class="ruby">    raise &quot;Can only withdrawal amounts &gt; 0. Try again&quot; unless debit_amount.to_i.integer? &amp;&amp; debit_amount.to_i.positive?</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="28">
@@ -887,7 +887,7 @@
         <li class="covered" data-hits="2" data-linenumber="18">
           <span class="hits">2</span>
           
-          <code class="ruby">      expect{ account.deposit(-100) }.to raise_error  </code>
+          <code class="ruby">      expect{ account.deposit(-100) }.to raise_error &quot;Can only deposit amounts &gt; 0. Try again&quot; </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
@@ -911,7 +911,7 @@
         <li class="covered" data-hits="2" data-linenumber="22">
           <span class="hits">2</span>
           
-          <code class="ruby">      expect{ account.deposit(&quot;money&quot;) }.to raise_error</code>
+          <code class="ruby">      expect{ account.deposit(&quot;money&quot;) }.to raise_error &quot;Can only deposit amounts &gt; 0. Try again&quot; </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
