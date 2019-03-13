@@ -3,7 +3,6 @@ require 'account'
 
 RSpec.describe 'User Stories' do 
 
-
   it 'allows user to have a bank account' do 
     account = Account.new
     expect(account).to be_a Account
@@ -42,7 +41,7 @@ end
       test_account.deposit(1000, date)
       test_account.deposit(2000, date)
       # test_account.withdrawal(50, Date.new(2001-01-01))
-      expect(test_account.print_statement).to eq  "date || credit || debit || balance\n2001-01-01 || 1000 || 1000 || 1000\n2001-01-01 || 2000 || 2000 || 3000"
+      expect(test_account.print_statement).to eq  "date || credit || debit || balance\n2001-01-01 || 1000 || 0 || 1000\n2001-01-01 || 2000 || 0 || 3000"
       
     end 
   end 

@@ -17,7 +17,7 @@ attr_reader :history
 
   def print_history
     @history.map do |transaction| 
-      "#{transaction.date} || #{transaction.amount} || #{transaction.amount} || #{transaction.new_balance}" 
+      "#{transaction.date} || #{transaction.credit_amount} || #{transaction.debit_amount} || #{transaction.new_balance}" 
       end.unshift(HEADER).join("\n")
   end
 
