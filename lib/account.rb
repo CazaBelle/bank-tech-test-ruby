@@ -11,10 +11,10 @@ class Account
   end
   
   def deposit(credit_amount, date=Date.new)
+    raise "Can only deposit amounts > 0. Try again" if credit_amount < 0 
     debit_amount = 0
     @balance = @balance + credit_amount 
     new_transaction(credit_amount, debit_amount, @balance, date)
-   
   end 
 
   def withdrawal(debit_amount, date=Date.new)
